@@ -19,8 +19,7 @@ app.get('/profile', (req, res) => {
     }
   }, (error, response, body) => {
     if (!error) {
-      res.type('application/json');
-      res.send(body);
+      res.json(JSON.parse(body));
     } else {
       res.status(500).end();
     }
