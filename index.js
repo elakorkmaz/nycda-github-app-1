@@ -10,9 +10,21 @@ app.get('/', (request, response) => {
   response.redirect('/profile');
 });
 
-app.get('/profile', (request, response) => {
-  // this is where magic happens
-  response.send('Hello World');
+app.get('/profile', (req, res) => {
+  request({
+    method: 'GET',
+    url: 'https://api.github.com/users/izelnakri',
+    headers: {
+      'User-Agent': 'Izels awesome JS Code'
+    }
+  }, (error, response, body) => {
+    if (!error) {
+      res.type('application/json');
+      res.send(body);
+    } else {
+      res.status(500).end();
+    }
+  });
 });
 
 app.listen(3000, () => {
