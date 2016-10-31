@@ -26,6 +26,16 @@ app.get('/:username', (req, res) => {
   });
 });
 
+app.get('/api/:username', (req, res) => {
+  BaseRequest.get(GITHUB_API_SERVER + '/users/' + req. params.username, (error, response, body) => {
+    if (!error) {
+      res.json(JSON.parse(body));
+    } else {
+      res.status(500).end();
+    }
+  });
+});
+
 app.listen(3000, () => {
   console.log('Server is listening on port 3000');
 });

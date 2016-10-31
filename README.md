@@ -7,6 +7,9 @@ We created a simple Github copy web application that uses data from Github.
 
 then visit any github username name on localhost:3000. Cheers
 
+If you want to see the json we are fetching in each request visit
+
+http://localhost:3000/api/:username
 
 ###### Details
 
