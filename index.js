@@ -17,7 +17,7 @@ app.set('view engine', 'pug');
 app.use(morgan('dev'));
 
 app.get('/:username', (req, res) => {
-  BaseRequest.get(GITHUB_API_SERVER + '/users/' + req. params.username, (error, response, body) => {
+  BaseRequest.get(GITHUB_API_SERVER + '/users/' + req.params.username, (error, response, body) => {
     if (!error) {
       res.render('users/show', { user: JSON.parse(body) });
     } else {
@@ -27,7 +27,7 @@ app.get('/:username', (req, res) => {
 });
 
 app.get('/api/:username', (req, res) => {
-  BaseRequest.get(GITHUB_API_SERVER + '/users/' + req. params.username, (error, response, body) => {
+  BaseRequest.get(GITHUB_API_SERVER + '/users/' + req.params.username, (error, response, body) => {
     if (!error) {
       res.json(JSON.parse(body));
     } else {
