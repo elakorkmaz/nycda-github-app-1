@@ -1,26 +1,23 @@
 const express = require('express'),
       request = require('request'),
       pug = require('pug'),
-      morgan = require('morgan');
+      morgan = require('morgan'),
+      GITHUB_API_SERVER = 'https://api.github.com';
 
 var app = express();
+
+const BaseRequest = request.defaults({
+  headers: {
+    'User-Agent': 'Izels awesome JS Code'
+  }
+});
 
 app.set('view engine', 'pug');
 
 app.use(morgan('dev'));
 
-app.get('/', (request, response) => {
-  response.redirect('/profile');
-});
-
 app.get('/:username', (req, res) => {
-  request({
-    method: 'GET',
-    url: 'https://api.github.com/users/' + req.params.username,
-    headers: {
-      'User-Agent': 'Izels awesome JS Code'
-    }
-  }, (error, response, body) => {
+  BaseRequest.get(GITHUB_API_SERVER + '/users/' + req. params.username, (error, response, body) => {
     if (!error) {
       res.render('users/show', { user: JSON.parse(body) });
     } else {
