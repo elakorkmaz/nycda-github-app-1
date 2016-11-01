@@ -2,7 +2,9 @@ We created a simple Github copy web application that uses data from Github.
 
 #### TO RUN THE SERVER:
 
-```bash node index.js```
+```bash
+node index.js
+```
 
 
 then visit any github username name on localhost:3000. Cheers
